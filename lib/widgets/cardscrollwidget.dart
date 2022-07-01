@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:rigxtodo/util/data.dart';
+import 'package:rigxtodo/widgets/taskdetals.dart';
 import 'package:rigxtodo/widgets/taskdialog.dart';
 
 var cardAspectRatio = 12.0 / 16.0;
@@ -97,13 +98,20 @@ class CardScrollWidget extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20.0)),
                                 child: GestureDetector(
                                   onTap: (() {
-                                    showDialog(
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => TaskDetails(
+                                                  images[i],
+                                                  title[i],
+                                                )));
+                                    /*   showDialog(
                                       context: context,
                                       builder: (context) => TaskDialog(
                                         images[i],
                                         title[i],
                                       ),
-                                    );
+                                    ); */
                                   }),
                                   child: const Text("View",
                                       style: TextStyle(color: Colors.white)),
