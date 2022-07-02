@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class TaskList extends StatefulWidget {
   String button;
@@ -24,12 +25,12 @@ class _TaskListState extends State<TaskList> {
     '03 Jul 2022',
   ];
 
-  final List<String> _status = [
-    '30%',
-    '10%',
-    '5%',
-    '90%',
-    '100%',
+  final List<double> _status = [
+    30.0,
+    10.2,
+    5.4,
+    90.0,
+    100.0,
   ];
   int _currentIndex = 0;
 
@@ -56,7 +57,7 @@ class _TaskListState extends State<TaskList> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -64,19 +65,28 @@ class _TaskListState extends State<TaskList> {
                         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.blue.withOpacity(0.4),
-                            ),
-                            child: Center(
-                                child: Text(
-                              _status[index],
-                              style: const TextStyle(
-                                  color: Colors.blueAccent, fontSize: 16),
-                            )),
+                          CircularPercentIndicator(
+                            radius: 40,
+                            lineWidth: 10.0,
+                            animation: true,
+                            percent: _status[index] / 100,
+                            center: _status[index] != 100.0
+                                ? Text(
+                                    _status[index].toString() + "%",
+                                    style: const TextStyle(
+                                        color: Colors.blueAccent, fontSize: 16),
+                                  )
+                                : const Icon(
+                                    Icons.check,
+                                    color: Colors.greenAccent,
+                                  ),
+                            backgroundColor: _status[index] != 100.0
+                                ? Colors.blue.withOpacity(0.4)
+                                : Colors.green.withOpacity(0.4),
+                            circularStrokeCap: CircularStrokeCap.round,
+                            progressColor: _status[index] != 100.0
+                                ? Colors.blueAccent
+                                : Colors.greenAccent,
                           ),
                           const SizedBox(
                             width: 10,

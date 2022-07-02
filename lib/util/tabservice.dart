@@ -1,7 +1,4 @@
-
-
-            
-            /*  Padding(
+/*  Padding(
                 padding: const EdgeInsets.only(
                   left: 12.0,
                   right: 12.0,
@@ -51,5 +48,23 @@
                 ]),
               ), */
 
+import 'package:flutter/cupertino.dart';
 
-            
+/*
+//leaner progress bar
+LinearPercentIndicator(
+  animation: true,
+  animationDuration: 1000,
+  lineHeight: 20.0,
+  percent: 10/100,
+  center:Text("100" + "%", style: TextStyle(
+    fontSize: 12.0,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+
+  ),),
+  linearStrokeCap: LinearStrokeCap.roundAll,
+  progressColor: Colors.blue,
+  backgroudColor: Colors.grey,
+),
+      */      

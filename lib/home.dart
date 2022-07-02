@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:rigxtodo/util/customIcons.dart';
 import 'package:rigxtodo/util/data.dart';
 import 'package:rigxtodo/widgets/cardscrollwidget.dart';
@@ -229,133 +230,147 @@ class _HomeTodoState extends State<HomeTodo> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFF1b1e44),
-                          Color.fromARGB(255, 34, 37, 83),
-                        ],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        tileMode: TileMode.clamp)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        //  crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: const Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 22.0, vertical: 6.0),
-                                    child: Text('Total task created',
-                                        //TODO:: add current date to above
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                        )),
-                                  ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 20.0, right: 20.0, bottom: 50.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.blueAccent.withOpacity(0.2)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              Text(
+                                'Evaluation',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 20,
                                 ),
                               ),
-                              const SizedBox(height: 20),
-                              const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(6.0),
-                                  child: Text('20',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        //   fontSize: 18,
-                                      )),
+                              Text(
+                                'July, 2022',
+                                style: TextStyle(
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: const Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 22.0, vertical: 6.0),
-                                    child: Text('Total task due',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                        )),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CircularPercentIndicator(
+                                  radius: 25,
+                                  lineWidth: 5.0,
+                                  animation: true,
+                                  percent: (10 - 5) / 100,
+                                  center: const Text(
+                                    "5",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
                                   ),
+                                  backgroundColor: Colors.blue.withOpacity(0.4),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  progressColor: Colors.blueAccent,
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(6.0),
-                                  child: Text('6',
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Completed',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        //   fontSize: 18,
-                                      )),
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blueAccent,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: const Center(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 22.0, vertical: 6.0),
-                                    child: Text('Total task completed',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10,
-                                        )),
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 6,
+                                    ),
+                                    Text(
+                                      "Activites",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CircularPercentIndicator(
+                                  radius: 25,
+                                  lineWidth: 6.0,
+                                  animation: true,
+                                  percent: (10 - 2) / 100,
+                                  center: const Text(
+                                    "2",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 16),
                                   ),
+                                  backgroundColor:
+                                      Colors.green.withOpacity(0.4),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  progressColor: Colors.greenAccent,
                                 ),
-                              ),
-                              const SizedBox(height: 20),
-                              const Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(6.0),
-                                  child: Text('14',
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Pending',
                                       style: TextStyle(
                                         color: Colors.white,
-                                        //   fontSize: 18,
-                                      )),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 6,
+                                    ),
+                                    Text(
+                                      "Activites",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
